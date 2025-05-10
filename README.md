@@ -109,13 +109,13 @@ Don't forget to leave a star for this project if you found the solution helpful.
 ## Starting the Kubernetes Cluster
 1. **Start Minikube**:
    ```bash
-   minikube start --driver=docker --memory=4096 --cpus=2
+minikube start --driver=docker --memory=4096 --cpus=2
 
 
-   eval $(minikube docker-env)
+eval $(minikube docker-env)
 
-   kubectl create namespace shopcart
+kubectl create namespace shopcart
 
-   - Push images to Docker Hub.
+- Push images to Docker Hub.
 - Deploy to Minikube using `kubectl apply -f deployment.yaml -f service.yaml`.
 - Set up CI/CD with GitHub Actions.
