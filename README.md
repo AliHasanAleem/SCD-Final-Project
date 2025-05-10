@@ -11,7 +11,7 @@ Become a seller and add products, monitor sales, and gather customer feedback.
 
 [Youtube Video](https://youtu.be/i_z0HYk3IuQ?si=S04-IBq7Ny8k0FYC)
 <br><br>
-[LinkedIn](https://www.linkedin.com/in/yogndr/)
+
 
 # About
 
@@ -75,6 +75,7 @@ npm start
 Now, navigate to `localhost:3000` in your browser. 
 The Backend API will be running at `localhost:5000`.
 <br>
+
 # Error Solution
 
 If you encounter a network error while signing up, follow these steps to resolve it:
@@ -91,7 +92,6 @@ const REACT_APP_BASE_URL = "http://localhost:5000";
 
 The issue arises because the `.env` file in the frontend may not work for all users, while it works for me.
 
-These steps should resolve the network error in the frontend. If the issue persists, feel free to contact me for further assistance.
 
 Don't forget to leave a star for this project if you found the solution helpful. Thank you!
 
@@ -99,3 +99,8 @@ Don't forget to leave a star for this project if you found the solution helpful.
 * Render - server side
 * Vercel - client side
 
+├── deployment.yaml       # Kubernetes deployment manifest
+├── service.yaml          # Kubernetes service manifest
+
+- Deploy to Minikube using `deployment.yaml` and `service.yaml`.
+- Set up Docker Hub and CI/CD with GitHub Actions.
