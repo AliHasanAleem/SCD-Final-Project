@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shopcart-frontend
+  namespace: shopcart
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: shopcart-frontend
+  template:
+    metadata:
+      labels:
+        app: shopcart-frontend
+    spec:
+      containers:
+      - name: shopcart-frontend
+        image: alihassan786/final-frontend-container:latest
+        ports:
+        - containerPort: 3000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shopcart-backend
+  namespace: shopcart
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: shopcart-backend
+  template:
+    metadata:
+      labels:
+        app: shopcart-backend
+    spec:
+      containers:
+      - name: shopcart-backend
+        image: alihassan786/final-backend-container:latest
+        ports:
+        - containerPort: 5000
+        env:
+        - name: MONGO_URL
+          value: "mongodb://shopcart-mongo:27017/ecommerce"
+        - name: SECRET_KEY
+          value: "secret-key"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shopcart-mongo
+  namespace: shopcart
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: shopcart-mongo
+  template:
+    metadata:
+      labels:
+        app: shopcart-mongo
+    spec:
+      containers:
+      - name: shopcart-mongo
+        image: mongo:latest
+        ports:
+        - containerPort: 27017
