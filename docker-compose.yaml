@@ -1,0 +1,49 @@
+version: '3.8'
+services:
+  frontend:
+    build:
+      context: ./app/frontend
+      dockerfile: Dockerfile
+    container_name: final-frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    networks:
+      - mern-network
+  backend:
+    build:
+      context: ./app/backend
+      dockerfile: Dockerfile
+    container_name: final-backend
+    environment:
+      - MONGODB_URI=mongodb+srv://ali:alialeem@cluster0.xfcz2.mongodb.net/
+    depends_on:
+      mongo:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/get"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+    networks:
+      - mern-network
+  mongo:
+    image: mongo:latest
+    container_name: mern-mongo
+    volumes:
+      - mongo-data:/data/db
+    healthcheck:
+      test: ["CMD", "mongo", "--eval", "db.adminCommand('ping')"]
+      interval: 15s
+      timeout: 10s
+      retries: 10
+      start_period: 20s
+    networks:
+      - mern-network
+networks:
+  mern-network:
+    driver: bridge
+volumes:
+  mongo-data:

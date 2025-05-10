@@ -28,50 +28,98 @@ const AuthenticationPage = ({ mode, role }) => {
     const [userNameError, setUserNameError] = useState(false);
     const [shopNameError, setShopNameError] = useState(false);
 
+    // const handleSubmit = (event) => {
+    //     event.preventDefault();
+
+    //     const email = event.target.email.value;
+    //     const password = event.target.password.value;
+
+    //     if (!email || !password) {
+    //         if (!email) setEmailError(true);
+    //         if (!password) setPasswordError(true);
+    //         return;
+    //     }
+
+    //     if (mode === "Register") {
+    //         const name = event.target.userName.value;
+
+    //         if (!name) {
+    //             if (!name) setUserNameError(true);
+    //             return;
+    //         }
+
+    //         if (role === "Seller") {
+    //             const shopName = event.target.shopName.value;
+
+    //             if (!shopName) {
+    //                 if (!shopName) setShopNameError(true);
+    //                 return;
+    //             }
+
+    //             const sellerFields = { name, email, password, role, shopName }
+    //             dispatch(authUser(sellerFields, role, mode))
+    //         }
+    //         else {
+    //             const customerFields = { name, email, password, role }
+
+    //             dispatch(authUser(customerFields, role, mode))
+    //         }
+    //     }
+    //     else if (mode === "Login") {
+    //         const fields = { email, password }
+    //         dispatch(authUser(fields, role, mode))
+    //     }
+    //     setLoader(true)
+    // };
+
+
+
     const handleSubmit = (event) => {
         event.preventDefault();
-
+    
+        // Get values from the form fields
         const email = event.target.email.value;
         const password = event.target.password.value;
-
+        const name = event.target.userName?.value; // Optional for registration mode
+        const shopName = event.target.shopName?.value; // Optional for seller registration
+    
+        // Initialize error states
+        let hasError = false;
+        setEmailError(!email);
+        setPasswordError(!password);
+    
         if (!email || !password) {
-            if (!email) setEmailError(true);
-            if (!password) setPasswordError(true);
+            hasError = true;
+        }
+    
+        if (mode === "Register") {
+            // Check for additional fields in "Register" mode
+            if (!name) {
+                setUserNameError(true);
+                hasError = true;
+            }
+    
+            if (role === "Seller" && !shopName) {
+                setShopNameError(true);
+                hasError = true;
+            }
+        }
+    
+        // If there's any error, stop the function execution
+        if (hasError) {
             return;
         }
-
-        if (mode === "Register") {
-            const name = event.target.userName.value;
-
-            if (!name) {
-                if (!name) setUserNameError(true);
-                return;
-            }
-
-            if (role === "Seller") {
-                const shopName = event.target.shopName.value;
-
-                if (!shopName) {
-                    if (!shopName) setShopNameError(true);
-                    return;
-                }
-
-                const sellerFields = { name, email, password, role, shopName }
-                dispatch(authUser(sellerFields, role, mode))
-            }
-            else {
-                const customerFields = { name, email, password, role }
-
-                dispatch(authUser(customerFields, role, mode))
-            }
-        }
-        else if (mode === "Login") {
-            const fields = { email, password }
-            dispatch(authUser(fields, role, mode))
-        }
-        setLoader(true)
+    
+        // Prepare the fields for registration or login
+        const fields = { email, password, role, name, shopName: role === "Seller" ? shopName : undefined };
+    
+        // Dispatch the appropriate action
+        dispatch(authUser(fields, role, mode));
+    
+        // Set loader to true while waiting for the response
+        setLoader(true);
     };
-
+    
     const handleInputChange = (event) => {
         const { name } = event.target;
         if (name === 'email') setEmailError(false);

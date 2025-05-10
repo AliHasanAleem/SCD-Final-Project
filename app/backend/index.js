@@ -6,7 +6,7 @@ const dotenv = require("dotenv")
 const app = express()
 const Routes = require("./routes/route.js")
 
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 5001
 
 dotenv.config();
 
@@ -26,3 +26,8 @@ app.use('/', Routes);
 app.listen(PORT, () => {
     console.log(`Server started at port no. ${PORT}`)
 })
+
+app.get('/health', (req, res) => {
+    res.status(200).send('OK');
+  });
+  
