@@ -1,70 +1,83 @@
-# Getting Started with Create React App
+ A full-stack MERN (MongoDB, Express.js, React, Node.js) ecommerce application for seamless shopping and selling. Customers can search products, add to cart, and checkout, while sellers can manage products and monitor sales.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+ ## Project Description
+ This project is part of the SCD course, demonstrating a MERN ecommerce application deployed on a local Kubernetes cluster using Minikube. ShopCart allows users to register as customers or sellers, browse products by category, leave reviews, and track orders. Sellers have a dashboard to manage products and view sales data with visualizations.
 
-## Available Scripts
+ ## Features
+ - **User Registration**: Register as a customer or seller.
+ - **Cart System**: Add products to cart and review before checkout.
+ - **Product Search**: Search by name or browse categories (Electronics, Clothes, Kitchen, etc.).
+ - **Reviews and Ratings**: Customers can rate products out of 5.
+ - **Seller Dashboard**: Manage products, view sales, and see data visualizations.
+ - **Product Management**: Sellers add products, set prices, and track cart additions.
+ - **Order Tracking**: Sellers monitor customer orders.
 
-In the project directory, you can run:
+ ## Prerequisites
+ - Node.js 18
+ - MongoDB
+ - Docker (for later parts)
+ - Minikube and kubectl (for Kubernetes deployment)
 
-### `npm start`
+ ## Project Structure
+ ```
+ ├── app/
+ │   ├── frontend/         # React frontend
+ │   ├── backend/          # Node.js/Express backend
+ ├── docker-compose.yml    # Docker Compose configuration
+ ├── .gitignore            # Git ignore file
+ ├── README.md             # Project documentation
+ ```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+ ## Running the Application Locally
+ 1. **Clone the Repository**:
+    ```bash
+    git clone https://github.com/<your-username>/MERN-Ecommerce-Site.git
+    cd MERN-Ecommerce-Site
+    ```
+ 2. **Install MongoDB**:
+    ```bash
+    brew tap mongodb/brew
+    brew install mongodb-community
+    brew services start mongodb-community
+    ```
+ 3. **Run Backend**:
+    ```bash
+    cd app/backend
+    npm install
+    cp .env.example .env
+    npm start
+    ```
+    - Backend runs on `http://localhost:5000`.
+    - Edit `.env` with your MongoDB URL (e.g., `MONGO_URL=mongodb://127.0.0.1/ecommerce`).
+ 4. **Run Frontend**:
+    ```bash
+    cd app/frontend
+    npm install
+    npm start
+    ```
+    - Frontend runs on `http://localhost:3000`.
+ 5. **Test the App**:
+    - Open `http://localhost:3000`.
+    - Register as a customer or seller, browse products, add to cart, and test checkout.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+ ## Troubleshooting
+ If you encounter a network error during signup:
+ 1. Open `app/frontend/src/redux/userHandle.js`.
+ 2. Add:
+    ```javascript
+    const REACT_APP_BASE_URL = "http://localhost:5000";
+    ```
+ 3. Replace `process.env.REACT_APP_BASE_URL` with `REACT_APP_BASE_URL`.
 
-### `npm test`
+ ## Next Steps
+ - Containerize the app (Dockerfiles in `app/frontend` and `app/backend`).
+ - Deploy to Minikube using Kubernetes manifests.
+ - Set up CI/CD with GitHub Actions.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+ ## Environment
+ - OS: macOS 15.3 (ARM64)
+ - Node.js: 18
+ - MongoDB: Latest
+ - Docker: Latest
+ - Minikube: v1.35.0
+ - kubectl: Latest
