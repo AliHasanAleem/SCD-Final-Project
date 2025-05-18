@@ -119,3 +119,28 @@ kubectl create namespace shopcart
 - Push images to Docker Hub.
 - Deploy to Minikube using `kubectl apply -f deployment.yaml -f service.yaml`.
 - Set up CI/CD with GitHub Actions.
+
+## Docker Hub Setup
+1. **Create Docker Hub Repositories**:
+   - Create `shopcart-frontend` and `shopcart-backend` repositories on [Docker Hub](https://hub.docker.com).
+2. **Build and Push Images**:
+   ```bash
+   cd app/frontend
+   docker build -t <your-dockerhub-username>/shopcart-frontend:latest --platform linux/arm64 .
+   docker push <your-dockerhub-username>/shopcart-frontend:latest
+   cd ../backend
+   docker build -t <your-dockerhub-username>/shopcart-backend:latest --platform linux/arm64 .
+   docker push <your-dockerhub-username>/shopcart-backend:latest
+
+- Deploy to Minikube using `kubectl apply -f deployment.yaml -f service.yaml`.
+- Set up CI/CD with GitHub Actions.
+
+
+### Kubernetes Deployment Troubleshooting
+- **CrashLoopBackOff**:
+  ```bash
+  kubectl logs <frontend-pod-name> -n shopcart
+  kubectl describe pod <frontend-pod-name> -n shopcart
+  nano deployment.yaml  # Add REACT_APP_BASE_URL=http://shopcart-backend-service:5000
+  kubectl apply -f deployment.yaml
+  kubectl delete pod <frontend-pod-name> -n shopcart

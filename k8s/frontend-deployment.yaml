@@ -4,7 +4,7 @@ metadata:
   name: shopcart-frontend
   namespace: shopcart
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: shopcart-frontend
@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: shopcart-frontend
-        image: alihassan786/final-frontend-container:latest
+        image: alihassan786/shopcart-frontend:latest
         ports:
         - containerPort: 3000
 ---
@@ -25,7 +25,7 @@ metadata:
   name: shopcart-backend
   namespace: shopcart
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: shopcart-backend
@@ -36,12 +36,12 @@ spec:
     spec:
       containers:
       - name: shopcart-backend
-        image: alihassan786/final-backend-container:latest
+        image: alihassan786/shopcart-backend:latest
         ports:
         - containerPort: 5000
         env:
         - name: MONGO_URL
-          value: "mongodb://shopcart-mongo:27017/ecommerce"
+          value: "mongodb://mongodb-service.shopcart.svc.cluster.local:27017/shopcart"
         - name: SECRET_KEY
           value: "secret-key"
 ---

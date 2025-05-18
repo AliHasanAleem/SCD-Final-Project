@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: shopcart-frontend
+  name: shopcart-frontend-service
   namespace: shopcart
 spec:
   type: NodePort
@@ -10,12 +10,12 @@ spec:
   ports:
   - port: 80
     targetPort: 3000
-    nodePort: 30007
+    nodePort: 30008
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: shopcart-backend
+  name: shopcart-backend-service
   namespace: shopcart
 spec:
   type: ClusterIP
