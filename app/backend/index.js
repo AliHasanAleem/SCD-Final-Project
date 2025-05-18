@@ -22,7 +22,7 @@ mongoose
     .catch((err) => console.log("NOT CONNECTED TO NETWORK", err))
 
 app.use('/', Routes);
-// Hello Ali
+// Hello Ali from main branch
 
 app.listen(PORT, () => {
     console.log(`Server started at port no. ${PORT}`)
