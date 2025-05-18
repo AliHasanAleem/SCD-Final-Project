@@ -1,0 +1,18 @@
+[2025-05-16 20:24:08-4N] --------whoami--------
+virk
+[2025-05-16 20:24:08-4N] --------whoami--------
+[2025-05-16 20:24:08-4N] Waiting for Runner.Listener (743) to complete
+[2025-05-16 20:24:08-4N] Process 743 finished running
+[2025-05-16 20:24:08-4N] Sleep 1 more second to make sure process exited
+[2025-05-16 20:24:10-4N] move /Users/virk/SEMESTER_6_DATA/SCD_DATA/MERN-Ecommerce-Site/actions-runner/bin /Users/virk/SEMESTER_6_DATA/SCD_DATA/MERN-Ecommerce-Site/actions-runner/bin.2.323.0
+/Users/virk/SEMESTER_6_DATA/SCD_DATA/MERN-Ecommerce-Site/actions-runner/bin -> /Users/virk/SEMESTER_6_DATA/SCD_DATA/MERN-Ecommerce-Site/actions-runner/bin.2.323.0
+[2025-05-16 20:24:10-4N] move /Users/virk/SEMESTER_6_DATA/SCD_DATA/MERN-Ecommerce-Site/actions-runner/externals /Users/virk/SEMESTER_6_DATA/SCD_DATA/MERN-Ecommerce-Site/actions-runner/externals.2.323.0
+/Users/virk/SEMESTER_6_DATA/SCD_DATA/MERN-Ecommerce-Site/actions-runner/externals -> /Users/virk/SEMESTER_6_DATA/SCD_DATA/MERN-Ecommerce-Site/actions-runner/externals.2.323.0
+[2025-05-16 20:24:10-4N] Create junction bin folder
+[2025-05-16 20:24:10-4N] Create junction externals folder
+[2025-05-16 20:24:10-4N] Path for fallback node exists, skipping creating /Users/virk/SEMESTER_6_DATA/SCD_DATA/MERN-Ecommerce-Site/actions-runner/externals.2.323.0/node20/bin/node
+[2025-05-16 20:24:10-4N] Update runsvc.sh
+[2025-05-16 20:24:10-4N] Update succeed
+[2025-05-16 20:24:10-4N] update.finished file creation succeed
+[2025-05-16 20:24:10-4N] Rename /Users/virk/SEMESTER_6_DATA/SCD_DATA/MERN-Ecommerce-Site/actions-runner/_diag/SelfUpdate-20250516-152408.log to be /Users/virk/SEMESTER_6_DATA/SCD_DATA/MERN-Ecommerce-Site/actions-runner/_diag/SelfUpdate-20250516-152408.log.succeed
+/Users/virk/SEMESTER_6_DATA/SCD_DATA/MERN-Ecommerce-Site/actions-runner/_diag/SelfUpdate-20250516-152408.log -> /Users/virk/SEMESTER_6_DATA/SCD_DATA/MERN-Ecommerce-Site/actions-runner/_diag/SelfUpdate-20250516-152408.log.succeed
